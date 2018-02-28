@@ -1,0 +1,98 @@
+apply plugin: 'com.android.application'
+
+configurations {
+    mockableCompile
+    sitDebugCompile
+    productionDebugCompile
+    productionReleaseCompile
+}
+
+android {
+    signingConfigs {
+        Release {
+            keyAlias 'traccer'
+            storeFile file('C:/AndroidKey/Tracfone_Release.keystore')
+            keyPassword 'J'
+            storePassword '3'
+        }
+        ReleaseInternal {
+            keyAlias 'sitkey'
+            storeFile file('C:/AndroidKey/TracFone_SIT.keystore')
+            keyPassword 'Tracfone_Eng123'
+            storePassword 'Tracfone_Eng123'
+        }
+    }
+    defaultPublishConfig "productionDebug"
+    publishNonDefault true
+    compileSdkVersion 27
+    buildToolsVersion '26.0.1'
+
+
+    def ver_code_dev = 2400
+    def ver_name_dev = "D4.0.14"
+
+    def ver_code_rel = 2300
+    def ver_name_rel = "B5.0.0"
+    defaultConfig {
+        applicationId "com.trac.preload.accountservices"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFile 'proguard-android.txt'
+            zipAlignEnabled true
+        }
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            proguardFile 'proguard-android.txt'
+            zipAlignEnabled true
+            versionNameSuffix "-debug"
+        }
+    }
+
+    productFlavors {
+        mockable {
+            versionCode ver_code_dev
+            versionName ver_name_dev + "-mock"
+            signingConfig signingConfigs.ReleaseInternal
+        }
+        sit {
+            versionCode ver_code_dev
+            versionName ver_name_dev + "-sit"
+            signingConfig signingConfigs.ReleaseInternal
+        }
+        production {
+            versionCode ver_code_rel
+            versionName ver_name_rel
+            signingConfig signingConfigs.ReleaseInternal
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+}
+
+dependencies {
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    mockableCompile project(path: ':myAccount_Lib', configuration: 'mockableDebug')
+    sitDebugCompile project(path: ':myAccount_Lib', configuration: 'sitDebug')
+    productionDebugCompile project(path: ':myAccount_Lib', configuration: 'productionDebug')
+    productionReleaseCompile project(path: ':myAccount_Lib', configuration: 'productionRelease')
+    compile 'com.android.support:appcompat-v7:26.0.1'
+    // Urban Airship SDK
+    compile 'com.urbanairship.android:urbanairship-sdk:9.0.1'
+    compile 'com.google.android.gms:play-services-gcm:11.8.0'
+
+    // Recommended for location services
+    compile 'com.google.android.gms:play-services-location:11.8.0'
+}

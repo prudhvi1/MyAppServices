@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tracfone.generic.myaccountlibrary">
+
+    <!-- Dangerous Permission -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--debug only <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
+    <!--debug only <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />  -->
+
+    <application>
+       <!-- <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="075fcf5cd6ca4f8a89676b47c8873458f2cd8ccc" />-->
+    </application>
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="23" />
+
+</manifest>
