@@ -125,12 +125,12 @@ public class StatusAnalyzer implements AnalyzerInterface, ValidateDeviceJobInten
         final Handler mHandler = new Handler(Looper.getMainLooper());
         mHandler.post(new Runnable() {
             @Override public void run() {
-                onResposeSuccess(result, cacheKey);
+                onResponseSuccess(result, cacheKey);
             }
         });
     }
 
-    public void onResposeSuccess(String result, String cacheKey) {
+    private void onResponseSuccess(String result, String cacheKey) {
             if (result == null) {
                 tfLogger.add("ValidateDevice", " performValidateDeviceRequest: onRequestSuccess", "result = null");
                 GlobalValues.setValidatedDeviceValid(false);
@@ -147,6 +147,16 @@ public class StatusAnalyzer implements AnalyzerInterface, ValidateDeviceJobInten
                     GlobalValues.setValidatedDeviceValid(true);
                     //Save Validated Device
                     GlobalValues.setBrand(validatedDeviceResponse.getResponse().getBrand());
+                    // Store these in the shared preference.
+                    GlobalStoredValues.setSubBrandName(validatedDeviceResponse.getResponse().getBrand());
+                    GlobalStoredValues.setMdnFromSub(validatedDeviceResponse.getResponse().getDeviceMin());
+                    GlobalStoredValues.setEsnFromSub(validatedDeviceResponse.getResponse().getDeviceEsn());
+                    GlobalStoredValues.setServiceEndDate(validatedDeviceResponse.getResponse().getLastDayService());
+                    GlobalStoredValues.setStatusFromSub(validatedDeviceResponse.getResponse().getDeviceStatus());
+                    GlobalStoredValues.setSimFromSub(validatedDeviceResponse.getResponse().getSim().getIccid());
+                    GlobalStoredValues.setCarrierFromSub(validatedDeviceResponse.getResponse().getSim().getCarrier());
+
+
                     Log.v("ValidateDevice","Brand::"+GlobalValues.getBrand());
                     // Set values in activity
                     mAnalyzerFragment.setDeviceDetails(GlobalValues.getBrand(),validatedDeviceResponse.getResponse().getDeviceStatus(), validatedDeviceResponse.getResponse().getLastDayService());

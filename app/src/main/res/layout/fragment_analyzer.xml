@@ -152,6 +152,48 @@
                 android:textSize="14sp"
                 />
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ESN_FROM_BACKEND"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:layout_marginRight="10sp"/>
+            <TextView
+                android:id="@+id/tv_sub_esn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SIM_FROM_BACKEND"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:layout_marginRight="10sp"/>
+            <TextView
+                android:id="@+id/tv_sub_sim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                />
+        </LinearLayout>
 
     </LinearLayout>
 </RelativeLayout>

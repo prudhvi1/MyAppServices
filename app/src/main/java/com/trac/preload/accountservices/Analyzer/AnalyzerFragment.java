@@ -22,7 +22,7 @@ import com.trac.preload.accountservices.R;
 
 public class AnalyzerFragment extends Fragment {
 
-    private TextView brandName, status, end_date;
+    private TextView brandName, status, end_date, sub_esn, sub_sim;
     private EditText serial1, serial2, serial3;
     private Button goBtn1,goBtn2,goBtn3;
     private StatusAnalyzer mStatusAnalyzer;
@@ -108,6 +108,8 @@ public class AnalyzerFragment extends Fragment {
         brandName = (TextView) root.findViewById(R.id.tv_brand_name);
         status = (TextView) root.findViewById(R.id.tv_device_status);
         end_date = (TextView) root.findViewById(R.id.tv_device_end);
+        sub_esn = (TextView) root.findViewById(R.id.tv_sub_esn);
+        sub_sim = (TextView) root.findViewById(R.id.tv_sub_sim);
 
         return root;
     }
@@ -116,12 +118,17 @@ public class AnalyzerFragment extends Fragment {
         brandName.setText(bName);
         status.setText(dStatus);
         end_date.setText(endDate);
+        sub_esn.setText(GlobalStoredValues.getEsnFromSub());
+        String simInfo = GlobalStoredValues.getSimFromSub().concat("\t").concat(GlobalStoredValues.getCarrierFromSub());
+        sub_sim.setText(simInfo);
     }
 
     public void clearDeviceDetails(){
         brandName.setText("");
         status.setText("");
         end_date.setText("");
+        sub_esn.setText("");
+        sub_sim.setText("");
     }
 
     public void setErrorToast(String msg){
