@@ -17,7 +17,6 @@ import com.trac.preload.accountservices.R;
 public class AnalyzerActivity extends AppCompatActivity {
 
     private StatusAnalyzer mStatusAnalyzer;
-    //private TelephonyManager tMgr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
