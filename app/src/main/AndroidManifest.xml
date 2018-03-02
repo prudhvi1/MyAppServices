@@ -60,13 +60,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Analyzer.AnalyzerActivity">
-            <intent-filter>
+        <activity
+            android:name=".Analyzer.AnalyzerActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait">
+
+
+        <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
 
+        </activity>
         <service
             android:name=".Services.ValidateDeviceJobIntentService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
