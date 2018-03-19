@@ -1,12 +1,5 @@
 apply plugin: 'com.android.application'
 
-configurations {
-    mockableCompile
-    sitDebugCompile
-    productionDebugCompile
-    productionReleaseCompile
-}
-
 android {
     signingConfigs {
         Release {
@@ -25,7 +18,6 @@ android {
     defaultPublishConfig "productionDebug"
     publishNonDefault true
     compileSdkVersion 27
-    buildToolsVersion '26.0.1'
 
 
     def ver_code_dev = 2400
@@ -43,20 +35,16 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
-            proguardFile 'proguard-android.txt'
-            zipAlignEnabled true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
             minifyEnabled false
-            shrinkResources false
-            proguardFile 'proguard-android.txt'
-            zipAlignEnabled true
-            versionNameSuffix "-debug"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
+    flavorDimensions "default"
     productFlavors {
         mockable {
             versionCode ver_code_dev
@@ -83,14 +71,8 @@ android {
 }
 
 dependencies {
+    api project(':myAccount_Lib')
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    mockableCompile project(path: ':myAccount_Lib', configuration: 'mockableDebug')
-    sitDebugCompile project(path: ':myAccount_Lib', configuration: 'sitDebug')
-    productionDebugCompile project(path: ':myAccount_Lib', configuration: 'productionDebug')
-    productionReleaseCompile project(path: ':myAccount_Lib', configuration: 'productionRelease')
-    compile 'com.android.support:appcompat-v7:26.0.1'
-    // Urban Airship SDK
-    compile 'com.urbanairship.android:urbanairship-sdk:9.0.1'
     compile 'com.google.android.gms:play-services-gcm:11.8.0'
 
     // Recommended for location services

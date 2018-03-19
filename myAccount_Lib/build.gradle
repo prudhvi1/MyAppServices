@@ -10,8 +10,7 @@ configurations {
 android {
     defaultPublishConfig "productionDebug"
     publishNonDefault true
-    compileSdkVersion 26
-    buildToolsVersion '26.0.1'
+    compileSdkVersion 27
 
     gradle.projectsEvaluated {
         tasks.withType(JavaCompile) {
@@ -21,27 +20,24 @@ android {
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 27
     }
 
     buildTypes {
         release {
-            consumerProguardFiles 'proguard-android.txt'
-
-
-
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-            consumerProguardFiles 'proguard-android.txt'
-
-
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
+    flavorDimensions "default"
     productFlavors {
-        mockable {  }
-        sit {  }
-        production {  }
+        mockable { flavorDimensions "default" }
+        sit { flavorDimensions "default" }
+        production { flavorDimensions "default" }
     }
 
     packagingOptions {
@@ -59,9 +55,9 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:26.0.1'
-    compile 'com.android.support:appcompat-v7:26.0.1'
-    compile 'com.android.support:design:26.0.1'
+    compile 'com.android.support:support-v4:27.1.0'
+    compile 'com.android.support:appcompat-v7:27.1.0'
+    compile 'com.android.support:design:27.1.0'
     compile files('libs/jackson-annotations-2.2.3.jar')
     compile files('libs/jackson-core-2.2.3.jar')
     compile files('libs/jackson-databind-2.2.3.jar')

@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AccountServicesRepo.iml" filepath="$PROJECT_DIR$/.idea/AccountServicesRepo.iml" />
-      <module fileurl="file://C:\astudio\AccountServicesRepo\MyAccountAnalyzer.iml" filepath="C:\astudio\AccountServicesRepo\MyAccountAnalyzer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AccountServicesRepo.iml" filepath="$PROJECT_DIR$/AccountServicesRepo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\astudio\AccountServicesRepo\app\app.iml" filepath="C:\astudio\AccountServicesRepo\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/myAccount_Lib/myAccount_Lib.iml" filepath="$PROJECT_DIR$/myAccount_Lib/myAccount_Lib.iml" />
-      <module fileurl="file://C:\astudio\AccountServicesRepo\myAccount_Lib\myAccount_Lib.iml" filepath="C:\astudio\AccountServicesRepo\myAccount_Lib\myAccount_Lib.iml" />
     </modules>
   </component>
 </project>

@@ -75,6 +75,10 @@
         <service
             android:name=".Services.ValidateDeviceJobIntentService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <service android:name=".SubManager.SubscriptionService" >
+        </service>
+
     </application>
 
 </manifest>
