@@ -1,7 +1,8 @@
-package com.trac.preload.accountservices.Analyzer;
+package com.trac.preload.accountservices.analyzer;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.trac.preload.accountservices.R;
 
 /**
+ * Fragment handles app views
  * Created by com.tracfone.preload on 2/26/2018.
  */
 
@@ -51,7 +53,7 @@ public class AnalyzerFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_analyzer, container, false);
         // Set up status quey views
@@ -105,11 +107,11 @@ public class AnalyzerFragment extends Fragment {
 
         // Set up device status view
 
-        brandName = (TextView) root.findViewById(R.id.tv_brand_name);
-        status = (TextView) root.findViewById(R.id.tv_device_status);
-        end_date = (TextView) root.findViewById(R.id.tv_device_end);
-        sub_esn = (TextView) root.findViewById(R.id.tv_sub_esn);
-        sub_sim = (TextView) root.findViewById(R.id.tv_sub_sim);
+        brandName = root.findViewById(R.id.tv_brand_name);
+        status = root.findViewById(R.id.tv_device_status);
+        end_date = root.findViewById(R.id.tv_device_end);
+        sub_esn = root.findViewById(R.id.tv_sub_esn);
+        sub_sim = root.findViewById(R.id.tv_sub_sim);
 
         return root;
     }
@@ -138,6 +140,8 @@ public class AnalyzerFragment extends Fragment {
     public static void hideSoftKeyboard (Activity activity, View view)
     {
         InputMethodManager imm = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(view.getApplicationWindowToken(), 0);
+        if (imm != null) {
+            imm.hideSoftInputFromWindow(view.getApplicationWindowToken(), 0);
+        }
     }
 }

@@ -1,6 +1,7 @@
-package com.trac.preload.accountservices.Analyzer;
+package com.trac.preload.accountservices.analyzer;
 
 /**
+ * Analyzer Interface
  * Created by com.tracfone.preload on 2/2/2018.
  */
 

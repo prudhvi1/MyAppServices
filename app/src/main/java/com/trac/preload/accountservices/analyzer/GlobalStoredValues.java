@@ -1,4 +1,4 @@
-package com.trac.preload.accountservices.Analyzer;
+package com.trac.preload.accountservices.analyzer;
 
 /**
  * Created by sramprasad on 3/1/2018.

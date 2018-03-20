@@ -51,7 +51,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Analyzer.AnalyzerActivity"
+            android:name=".analyzer.AnalyzerActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
 
@@ -63,12 +63,19 @@
 
         </activity>
         <service
-            android:name=".Services.ValidateDeviceJobIntentService"
+            android:name=".services.ValidateDeviceJobIntentService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        <service android:name=".SubManager.SubscriptionService"
+        <service android:name=".subscriptionmanager.SubscriptionService"
                  android:permission="android.permission.BIND_JOB_SERVICE">
         </service>
+
+        <!-- Start the Service if applicable on boot -->
+        <receiver android:name=".subscriptionmanager.OnBootupReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
 
     </application>
 

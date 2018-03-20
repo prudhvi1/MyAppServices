@@ -1,4 +1,4 @@
-package com.trac.preload.accountservices.SubManager;
+package com.trac.preload.accountservices.subscriptionmanager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,21 +14,22 @@ import java.util.List;
 
 
 /**
+ * Subscription Service listens on sim state changes
  * Created by syennamani on 3/19/2018.
  */
 
 public class SubscriptionService extends JobIntentService {
     private static final String TAG = "SubscriptionService";
-    SubscriptionManager mSubscriptionManager = null;
-    static final int JOB_ID = 100126;
-    private static Context mContext;
-    private List<SubscriptionInfo> mSubInfoList = null;
+    private static SubscriptionManager mSubscriptionManager = null;
+    private static final int JOB_ID = 100126;
     private static Handler mHandler;
 
     public static void enqueueWork(Context context, Intent work) {
         enqueueWork(context, SubscriptionService.class, JOB_ID, work);
         Log.d(TAG, "enqueueWork: ");
-        mContext = context;
+        if(mSubscriptionManager == null) {
+            mSubscriptionManager = SubscriptionManager.from(context);
+        }
         mHandler = new Handler();
     }
 
@@ -50,9 +51,7 @@ public class SubscriptionService extends JobIntentService {
 
     @Override
     protected void onHandleWork(@NonNull Intent intent) {
-        if(mSubscriptionManager == null) {
-            mSubscriptionManager = SubscriptionManager.from(mContext);
-        }
+
         printSubscriptionDetails();
         mSubscriptionManager.addOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
         mHandler.postDelayed(new Runnable() {
@@ -65,7 +64,7 @@ public class SubscriptionService extends JobIntentService {
     }
 
     private void printSubscriptionDetails(){
-        mSubInfoList = mSubscriptionManager.getActiveSubscriptionInfoList();
+        List<SubscriptionInfo> mSubInfoList = mSubscriptionManager.getActiveSubscriptionInfoList();
 
         if(mSubInfoList == null || mSubInfoList.isEmpty()){
             Log.v(TAG, "No Active Subscriptions");

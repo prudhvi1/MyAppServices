@@ -1,7 +1,6 @@
-package com.trac.preload.accountservices.Analyzer;
+package com.trac.preload.accountservices.analyzer;
 
 import android.Manifest;
-import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,19 +11,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telecom.TelecomManager;
-import android.telephony.TelephonyManager;
 
 
 import com.trac.preload.accountservices.R;
-import com.trac.preload.accountservices.SubManager.SubscriptionService;
-import com.tracfone.generic.myaccountlibrary.DebugConfig;
+import com.trac.preload.accountservices.subscriptionmanager.SubscriptionService;
 
-import java.security.Permission;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 public class AnalyzerActivity extends AppCompatActivity {
     private Context context;

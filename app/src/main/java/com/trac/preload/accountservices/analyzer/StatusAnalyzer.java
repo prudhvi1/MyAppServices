@@ -1,4 +1,4 @@
-package com.trac.preload.accountservices.Analyzer;
+package com.trac.preload.accountservices.analyzer;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -7,7 +7,7 @@ import android.util.Log;
 
 import com.trac.preload.accountservices.BrandConstants;
 import com.trac.preload.accountservices.GlobalValues;
-import com.trac.preload.accountservices.Services.ValidateDeviceJobIntentService;
+import com.trac.preload.accountservices.services.ValidateDeviceJobIntentService;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.octo.android.robospice.persistence.CacheManager;

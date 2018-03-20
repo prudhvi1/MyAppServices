@@ -1,14 +1,10 @@
 package com.trac.preload.accountservices;
 
 import android.app.Application;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.util.Log;
 
 import com.octo.android.robospice.SpiceManager;
-import com.trac.preload.accountservices.SubManager.SubscriptionService;
 import com.tracfone.generic.myaccountlibrary.GlobalLibraryValues;
 import com.tracfone.generic.myaccountlibrary.LibraryConstants;
 import com.tracfone.generic.myaccountlibrary.restcommon.CachedSpiceService;
@@ -17,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Application class
  * Created by com.tracfone.preload on 2/2/2018.
  */
 
