@@ -66,6 +66,12 @@ public class SubscriptionService extends JobIntentService {
 
     private void printSubscriptionDetails(){
         mSubInfoList = mSubscriptionManager.getActiveSubscriptionInfoList();
+
+        if(mSubInfoList == null || mSubInfoList.isEmpty()){
+            Log.v(TAG, "No Active Subscriptions");
+            return;
+        }
+
         for(SubscriptionInfo info: mSubInfoList){
             Log.v(TAG, ""+info.getSubscriptionId()+ "\n"+ info.getNumber()+"\n"+info.getDisplayName()+"\n"+info.getCarrierName());
         }
