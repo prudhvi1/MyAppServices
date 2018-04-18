@@ -4,13 +4,13 @@ android {
     signingConfigs {
         Release {
             keyAlias 'traccer'
-            storeFile file('C:/AndroidKey/Tracfone_Release.keystore')
+//            storeFile file('C:/AndroidKey/Tracfone_Release.keystore')
             keyPassword 'J'
             storePassword '3'
         }
         ReleaseInternal {
             keyAlias 'sitkey'
-            storeFile file('C:/AndroidKey/TracFone_SIT.keystore')
+//            storeFile file('C:/AndroidKey/TracFone_SIT.keystore')
             keyPassword 'Tracfone_Eng123'
             storePassword 'Tracfone_Eng123'
         }

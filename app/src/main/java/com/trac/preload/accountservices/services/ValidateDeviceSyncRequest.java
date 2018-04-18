@@ -25,7 +25,7 @@ public class ValidateDeviceSyncRequest {
 
     private String min, esn, sim;
 
-    private ValidateDeviceSyncRequest(String min, String esn, String sim) {
+    public ValidateDeviceSyncRequest(String min, String esn, String sim) {
         this.min = min;
         this.esn = esn;
         this.sim = sim;
